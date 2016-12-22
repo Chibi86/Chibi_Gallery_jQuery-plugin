@@ -1,19 +1,20 @@
 <?
 /**
-*	Chipla image-module, crop img on-the-fly, store generated images in cache
-*
-**/
+ * Chipla image-module, crop img on-the-fly, store generated images in cache
+ * Made by Rasmus Berg (c) 2014-2016
+ * License under MIT license
+ */
 
 Class CImage{
 	
 	/**
    * Constant for default values
    */
-  const JPEG_QUALITY_DEFAULT = 60;		// JPEG Quality deafult value
-  const PNG_COMPRESSION_DEFAULT = -1;		// Set PNG Compression default value
-	const MAX_WIDTH_DEFAULT = 2000;			// Set max width default value
-	const MAX_HEIGHT_DEFAULT = 2000;		// Set max height default value
-	const USE_CACHE_DEFAULT = true;			// Set cache on (true) / off (false) by deafult
+  const JPEG_QUALITY_DEFAULT = 60;		 // JPEG Quality deafult value
+  const PNG_COMPRESSION_DEFAULT = -1;	 // Set PNG Compression default value
+	const MAX_WIDTH_DEFAULT = 2000;			 // Set max width default value
+	const MAX_HEIGHT_DEFAULT = 2000;		 // Set max height default value
+	const USE_CACHE_DEFAULT = true;			 // Set cache on (true) / off (false) by deafult
 	
 	/**
     * Properties

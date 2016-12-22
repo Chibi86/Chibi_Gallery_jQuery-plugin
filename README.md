@@ -27,6 +27,11 @@ The following external modules are included
 * Version: v2.7.1
 * License: Apache 2 License
 
+### Chipla image-module (CImage)
+* Homepage: -
+* Version: v1.1.0
+* License: MIT license
+
 Install instructions
 --------------------
 
