@@ -1,0 +1,11 @@
+RewriteEngine on
+
+##
+#Rewrite pages
+##
+
+# Img
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^image/v/([^\.]+)\.(png|jpg|gif)$   					image.php?src=$1.$2&verbose&%1 [NC,L,QSA]
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^image/([^\.]+)\.(png|jpg|gif)$    						image.php?src=$1.$2&%1 [NC,L,QSA]

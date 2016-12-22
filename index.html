@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang='en' class='no-js'>
+<head>
+  <meta charset='utf-8' />
+  <title>Chibi Gallery example (jQuery-plugin)</title>
+  <link rel="stylesheet/less" type="text/css" href="less/chibigallery.less">
+  <style>
+    #flash {
+      width: 925px;
+      margin: 2em auto;
+      background-color: #fff;
+      min-height: 10em;
+      border: 1px solid #999999;
+      padding: 1em;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 5px 1px 5px 1px #ccc;
+      -moz-box-shadow: 5px 1px 5px 1px #ccc;
+      box-shadow: 5px 1px 5px 1px #ccc;
+    }
+  </style>
+  <script src="js/less.min.js"></script>
+</header>
+<body>
+  <div id="flash">
+    <h1>Chibi Gallery, a jQuery-plugin for build a gallery</h1>
+    <p>This gallery is build on jQuery, html and use a selfstanding php class to resize images (you can replace with your own solution)</p>
+    <p>Here you find a <a href="http://www.student.bth.se/~rabe13/dbwebb-kurser/javascript/me/kmom03/playground/kmom3_chibi-gallery-jquery-plugin">Guide</a> to setup and set options for the gallery.</p>
+    
+    
+    <div class="gallery">
+      <!-- Last image -->
+      <div class="nav last" title="Last image">
+        <span class="cgl-nav-icon"></span>
+      </div>
+      <!-- Current image with title-text -->
+      <div class="gallery-current">
+        <img alt="" />
+      </div>
+      <!-- Next image -->
+      <div class="nav next" title="Next image">
+        <span class="cgl-nav-icon"></span>
+      </div>
+      <!-- Current image text -->
+      <div class="gallery-current-text"></div>
+      <!-- Thumbnails and image-list -->
+      <div class="gallery-all">
+        <img src="image/example/1.jpg?w=50&amp;h=50&amp;crop2fit" data-src="img/example/1.jpg" title="Water outside of The Blue Lagoon on Iceland - 1" />
+        <img src="image/example/2.jpg?w=50&amp;h=50&amp;crop2fit" data-src="img/example/2.jpg" title="Water outside of The Blue Lagoon on Iceland - 2" />
+        <img src="image/example/3.jpg?w=50&amp;h=50&amp;crop2fit" data-src="img/example/3.jpg" title="Water outside of The Blue Lagoon on Iceland - 3" class="selected" />
+      </div>
+      <!-- Play/pause slideshow -->
+      <div class="gallery-action">
+        <div class="nav play" title="Play slideshow">
+          <span class="cgl-nav-icon"></span>
+          <span class="cgl-nav-text">Play slideshow</span>
+        </div>
+        <div class="nav pause" title="Pause slideshow">
+          <span class="cgl-nav-icon"></span>
+          <span class="cgl-nav-text">Pause slideshow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/jquery.js"></script>
+  <script src="js/chibigallery.jquery.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.gallery').chibiGallery();
+    });
+  </script>
+</body>
+</html>

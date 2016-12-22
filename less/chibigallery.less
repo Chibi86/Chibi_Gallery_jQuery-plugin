@@ -1,0 +1,218 @@
+/**
+ * Style with LESS for Chibi Gallery, a jQuery plugin gallery
+ * Made by Rasmus Berg (c) 2016
+ * License under MIT license
+ */
+
+/** --------------------------------------------------------------
+ * Settings
+ *
+ */
+ 
+@cgl-width:          795px;                    // Gallery width
+@cgl-padding:        50px;                     // Gallery padding
+@cgl-background:     #333333;                  // Gallery background
+@cgl-color:          #aaaaaa;                  // Gallery text-color
+@cgl-colorHover:     @cgl-background;          // Gallery text hover color
+@cgl-loadImage:      url('../img/loader.png'); // Load image for gallery and lightbox
+@cgl-current-height: 500px;                    // Current height
+@cgl-navHeight:      15px;                     // Navigation (last/next/play/pause) height
+@cgl-navWidth:       20px;                     // Navigation (last/next/play/pause) width
+@cgl-navPadd:        10px;                     // Navigation (last/next/play/pause) padding
+@cgl-navColor:       @cgl-color;               // Navigation last and next color
+@cgl-navColorHover:  @cgl-colorHover;          // Navigation last and next hover color
+@cgl-navPlay:        #119B11;                  // Navigation play color 
+@cgl-navPause:       #D30000;                  // Navigation pause color
+@cgl-selectBorder:   #dddddd;                  // Selected thumbnail border color
+@cgl-thumbHover:     #ffffff;                  // Thumbnail hover border color
+ 
+/** --------------------------------------------------------------
+ * The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+ *
+ */
+.clearfix(){
+  *zoom:1;
+  &:before, &:after {content:"";display:table;}
+  &:after {clear:both;}
+}
+
+/** --------------------------------------------------------------
+ * CSS3 mixins.
+ * 
+ */
+
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box-shadow(@shadow: 5px 5px 5px 5px #555555) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+.box-sizing(@sizing:border-box) {
+  -webkit-box-sizing: @sizing;
+     -moz-box-sizing: @sizing;
+          box-sizing: @sizing;
+}
+
+.opacity(@opacity){
+  @old_opacity: @opacity * 100;
+  
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=@old_opacity)"; // IE8-9
+  filter: alpha(opacity=@old_opacity); // IE 5-7
+  opacity: @opacity; // Modern browsers
+}
+ 
+/**
+ * Here comes specific style for a certain test program.
+ */
+ 
+// Gallery
+.gallery {
+  width: @cgl-width;
+  margin: 5px auto;
+  padding: @cgl-padding;
+  background: @cgl-background;
+  .clearfix();
+  
+  & > div:not(.nav) {
+    width: 700px;
+    
+    &:not(.gallery-current){ margin: 0 auto 20px; }
+    &:last-of-type{ margin-bottom: 0; }
+  }
+  
+  .gallery-current{
+    float: left;
+    height: @cgl-current-height;
+    margin-bottom: 20px;
+    background: @cgl-loadImage no-repeat scroll center center;
+    
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  
+  .gallery-current-text{
+    text-align: center;
+    color: @cgl-color;
+    clear: both;
+  }
+  
+  .nav{
+    .border-radius(5px);
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    
+    &:hover {
+      background: @cgl-navColor;
+    }
+    
+    .cgl-nav-icon {
+      display: inline-block !important;
+      position: relative;
+      z-index: 2;
+    }
+    
+    &:not(.pause) .cgl-nav-icon{
+      border-bottom: @cgl-navHeight solid transparent;
+      border-top: @cgl-navHeight solid transparent;
+    }
+  }
+  
+  .last, .next{
+    height: @cgl-current-height;
+    padding: 5px 8.75px;
+    .box-sizing();
+    
+    .cgl-nav-icon { top: ((@cgl-current-height)/2) - 5px - @cgl-navHeight; }
+  }
+  .last{
+    margin-right: 10px;
+    float: left;
+    
+    .cgl-nav-icon { border-right: @cgl-navWidth solid @cgl-navColor; }
+    &:hover .cgl-nav-icon{ border-right-color: @cgl-navColorHover }
+  }
+  .next{
+    margin-left: 10px;
+    float: right;
+    
+    .cgl-nav-icon { border-left: @cgl-navWidth solid @cgl-navColor; }
+    &:hover .cgl-nav-icon{ border-left-color: @cgl-navColorHover }
+  }
+  .play, .pause{
+    padding: 10px;
+    margin: 5px 0 0;
+    border: 1px solid @cgl-navColor;
+    color: @cgl-color;
+    font-weight: 600;
+    
+    &:hover { color: @cgl-colorHover; }
+    span {
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+  }
+  .pause{
+    display: none;
+    
+    .cgl-nav-icon {
+      width: @cgl-navWidth / 3.75;
+      height: @cgl-navHeight * 2;
+      border-right: (@cgl-navWidth / 2.5) solid @cgl-navPause;
+      border-left: (@cgl-navWidth / 2.5) solid @cgl-navPause;
+    }
+  }
+  .play{
+    display: inline-block;
+    
+    .cgl-nav-icon { border-left: @cgl-navWidth solid @cgl-navPlay; }
+  }
+  
+  .gallery-all{
+    .clearfix();
+    
+    img{
+      padding: 2px;
+      margin-right: 2.34px;
+      border: 1px solid @cgl-background;
+      display: block;
+      float: left;
+      cursor: pointer;
+      
+      &.selected{ border-color: @cgl-selectBorder; }
+      &:hover{ border-color: @cgl-thumbHover; }
+    }
+  }
+  
+  .gallery-action {
+    clear: both;
+    text-align: center;
+  }
+}
+
+// lightbox
+#gallery_overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 998;
+  background: #000000 @cgl-loadImage no-repeat scroll center center;
+  .opacity(0);
+  cursor: pointer;
+}
+
+#gallery_lightbox{
+  position: fixed;
+  z-index: 999;
+  display: none;
+}

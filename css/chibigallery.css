@@ -1,0 +1,178 @@
+/**
+ * Style for Chibi Gallery, a jQuery plugin gallery
+ * Made by Rasmus Berg (c) 2016
+ * License under MIT license
+ *
+ * Uses: The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+ */
+
+.gallery {
+  width: 795px;
+  margin: 5px auto;
+  padding: 50px;
+  background: #333333;
+  *zoom: 1;
+}
+.gallery:before,
+.gallery:after {
+  content: "";
+  display: table;
+}
+.gallery:after {
+  clear: both;
+}
+.gallery > div:not(.nav) {
+  width: 700px;
+}
+.gallery > div:not(.nav):not(.gallery-current) {
+  margin: 0 auto 20px;
+}
+.gallery > div:not(.nav):last-of-type {
+  margin-bottom: 0;
+}
+.gallery .gallery-current {
+  float: left;
+  height: 500px;
+  margin-bottom: 20px;
+  background: url('../img/loader.png') no-repeat scroll center center;
+}
+.gallery .gallery-current img {
+  display: block;
+  margin: 0 auto;
+}
+.gallery .gallery-current-text {
+  text-align: center;
+  color: #aaaaaa;
+  clear: both;
+}
+.gallery .nav {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.gallery .nav:hover {
+  background: #aaaaaa;
+}
+.gallery .nav .cgl-nav-icon {
+  display: inline-block !important;
+  position: relative;
+  z-index: 2;
+}
+.gallery .nav:not(.pause) .cgl-nav-icon {
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+}
+.gallery .last,
+.gallery .next {
+  height: 500px;
+  padding: 5px 8.75px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.gallery .last .cgl-nav-icon,
+.gallery .next .cgl-nav-icon {
+  top: 230px;
+}
+.gallery .last {
+  margin-right: 10px;
+  float: left;
+}
+.gallery .last .cgl-nav-icon {
+  border-right: 20px solid #aaaaaa;
+}
+.gallery .last:hover .cgl-nav-icon {
+  border-right-color: #333333;
+}
+.gallery .next {
+  margin-left: 10px;
+  float: right;
+}
+.gallery .next .cgl-nav-icon {
+  border-left: 20px solid #aaaaaa;
+}
+.gallery .next:hover .cgl-nav-icon {
+  border-left-color: #333333;
+}
+.gallery .play,
+.gallery .pause {
+  padding: 10px;
+  margin: 5px 0 0;
+  border: 1px solid #aaaaaa;
+  color: #aaaaaa;
+  font-weight: 600;
+}
+.gallery .play:hover,
+.gallery .pause:hover {
+  color: #333333;
+}
+.gallery .play span,
+.gallery .pause span {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.gallery .pause {
+  display: none;
+}
+.gallery .pause .cgl-nav-icon {
+  width: 5.33333333px;
+  height: 30px;
+  border-right: 8px solid #D30000;
+  border-left: 8px solid #D30000;
+}
+.gallery .play {
+  display: inline-block;
+}
+.gallery .play .cgl-nav-icon {
+  border-left: 20px solid #119B11;
+}
+.gallery .gallery-all {
+  *zoom: 1;
+}
+.gallery .gallery-all:before,
+.gallery .gallery-all:after {
+  content: "";
+  display: table;
+}
+.gallery .gallery-all:after {
+  clear: both;
+}
+.gallery .gallery-all img {
+  padding: 2px;
+  margin-right: 2.34px;
+  border: 1px solid #333333;
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+.gallery .gallery-all img.selected {
+  border-color: #dddddd;
+}
+.gallery .gallery-all img:hover {
+  border-color: #ffffff;
+}
+.gallery .gallery-action {
+  clear: both;
+  text-align: center;
+}
+#gallery_overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 998;
+  background: #000000 url('../img/loader.png') no-repeat scroll center center;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@old_opacity)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  cursor: pointer;
+}
+#gallery_lightbox {
+  position: fixed;
+  z-index: 999;
+  display: none;
+}
