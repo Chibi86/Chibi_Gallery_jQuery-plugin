@@ -147,7 +147,7 @@ $(document).ready(function(){
         // When last arrow is clicked
         gallery.find('.last').click(function(){
           lastImage();
-          console.log("Clicked to move back to last image in gallery.");
+          console.log("Clicked to move backwards one image image in gallery.");
         });
         
         // When next arrow is clicked
@@ -155,6 +155,27 @@ $(document).ready(function(){
           nextImage();
           console.log("Clicked to move foward to next image in gallery.");
         });
+        
+        // If keyboard arrow keys is activated to use as navigation in gallery check for clicks on them
+        if(options.keyboard){
+          // When left arrow key on keyboard is press
+          $(window).keyup(function(event){
+            if(event.which == 37){
+              event.preventDefault();
+              lastImage();
+              console.log("Left arrow key on keyboard is press, move backwards one image image in gallery.");
+            }
+          });
+          
+          // When right arrow key on keyboard is press
+          $(window).keyup(function(event){
+            if(event.which == 39){
+              event.preventDefault();
+              nextImage();
+              console.log("Right arrow key on keyboard is press, move foward to next image in gallery.");
+            }
+          });
+        }
         
         // When slideshow is activated
         if(options.slideshow){
@@ -192,7 +213,8 @@ $(document).ready(function(){
       slideshow: true,    // Activate or deactivate slideshow
       autoplay: false,    // Activate or deactivate autoplay
       delay: 4000,        // Delay slideshow interval (milliseconds)
-      lightbox: true      // Activate or deactivate lightbox
+      lightbox: true,     // Activate or deactivate lightbox
+      keyboard: false     // Activate or deactivate use of left and right keys on keyboard to navigate between images
     }
   
     console.log('Added function chibiGallery() to jQuery object as plugin.');
